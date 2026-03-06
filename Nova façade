@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nova Façade – Expert Façade & Gros Œuvre BTP – Bourges</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --stone: #1a1614;
+  --concrete: #2c2825;
+  --sand: #c8a96e;
+  --cream: #f0ebe3;
+  --warm: #e8ddd0;
+  --accent: #d4843a;
+  --text: #f5f0ea;
+  --muted: #9a8f84;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--stone);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: rgba(26,22,20,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: var(--sand);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--warm); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--sand); }
+
+.nav-cta {
+  background: var(--accent); color: white !important;
+  padding: 0.55rem 1.4rem; border-radius: 2px;
+  transition: background 0.3s !important;
+}
+.nav-cta:hover { background: var(--sand) !important; color: var(--stone) !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: flex-end;
+  position: relative; overflow: hidden;
+  padding: 0 4rem 6rem;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(160deg, rgba(26,22,20,0.85) 0%, rgba(44,40,37,0.6) 50%, rgba(26,22,20,0.95) 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent, transparent 2px,
+      rgba(200,169,110,0.03) 2px, rgba(200,169,110,0.03) 4px
+    );
+  background-color: #2a2420;
+}
+
+.hero-pattern {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(212,132,58,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(200,169,110,0.08) 0%, transparent 60%);
+}
+
+/* Geometric line art */
+.hero-geo {
+  position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+  width: 420px; height: 420px; z-index: 1; opacity: 0.18;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--sand);
+  border: 1px solid rgba(200,169,110,0.4);
+  padding: 0.4rem 1rem; margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: 2px;
+  color: var(--cream);
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+.hero-title .accent { color: var(--sand); }
+
+.hero-sub {
+  margin-top: 2rem;
+  font-size: 1.05rem; font-weight: 300;
+  color: var(--warm); line-height: 1.7; max-width: 520px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-actions {
+  display: flex; gap: 1.2rem; align-items: center;
+  margin-top: 2.8rem;
+  animation: fadeUp 0.8s 0.45s ease both;
+}
+
+.btn-primary {
+  background: var(--accent); color: white;
+  padding: 1rem 2.4rem; font-size: 0.85rem;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--sand); transform: translateY(-2px); }
+
+.btn-tel {
+  display: flex; align-items: center; gap: 0.7rem;
+  color: var(--cream); text-decoration: none;
+  font-size: 1.05rem; font-weight: 500;
+  transition: color 0.3s;
+}
+.btn-tel:hover { color: var(--sand); }
+.btn-tel svg { width: 18px; height: 18px; }
+
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--muted); font-size: 0.7rem; letter-spacing: 2px;
+  text-transform: uppercase; z-index: 2;
+  animation: bounce 2s infinite;
+}
+.hero-scroll div { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--sand);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.stat {
+  padding: 2rem; text-align: center;
+  border-right: 1px solid rgba(26,22,20,0.2);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem; color: var(--stone); line-height: 1;
+}
+.stat-label {
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--concrete); margin-top: 0.3rem;
+}
+
+/* ── SECTIONS COMMON ── */
+section { padding: 6rem 4rem; }
+
+.section-tag {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1; color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.section-title span { color: var(--sand); }
+
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--sand));
+  margin-bottom: 2rem;
+}
+
+/* ── SERVICES ── */
+#services { background: var(--concrete); }
+
+.services-header { max-width: 600px; margin-bottom: 4rem; }
+.services-header p { color: var(--muted); line-height: 1.8; font-size: 1.05rem; }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+}
+
+.service-card {
+  background: var(--stone);
+  padding: 2.5rem; position: relative; overflow: hidden;
+  transition: background 0.3s;
+  cursor: default;
+}
+.service-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--sand));
+  transition: width 0.4s;
+}
+.service-card:hover::before { width: 100%; }
+.service-card:hover { background: #221e1b; }
+
+.service-icon {
+  font-size: 2.5rem; margin-bottom: 1.5rem;
+}
+.service-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem; letter-spacing: 1px;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.service-desc {
+  color: var(--muted); line-height: 1.7; font-size: 0.92rem;
+}
+
+/* ── ABOUT ── */
+#about {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+  background: var(--stone);
+}
+
+.about-visual {
+  position: relative; height: 480px;
+}
+
+.about-rect {
+  position: absolute; border-radius: 2px;
+}
+.about-rect-1 {
+  width: 75%; height: 80%; top: 0; left: 0;
+  background: linear-gradient(135deg, var(--concrete) 0%, #3a3330 100%);
+  border: 1px solid rgba(200,169,110,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 6rem; color: rgba(200,169,110,0.1);
+  letter-spacing: -2px;
+}
+.about-rect-2 {
+  width: 55%; height: 55%; bottom: 0; right: 0;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.about-rect-2 p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; color: white; letter-spacing: 1px;
+  line-height: 1.2; text-align: center;
+}
+.about-badge {
+  position: absolute; top: -1rem; right: 10%;
+  background: var(--sand); color: var(--stone);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: 2px;
+  padding: 0.6rem 1.2rem; border-radius: 2px;
+  transform: rotate(2deg);
+}
+
+.about-text p { color: var(--muted); line-height: 1.85; font-size: 1rem; margin-bottom: 1.2rem; }
+
+.about-highlights { display: flex; gap: 2rem; margin-top: 2rem; }
+.highlight {
+  display: flex; align-items: flex-start; gap: 0.8rem;
+}
+.highlight-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); margin-top: 0.4rem; flex-shrink: 0;
+}
+.highlight p { color: var(--warm); font-size: 0.9rem; font-weight: 500; }
+
+/* ── CONTACT ── */
+#contact { background: var(--concrete); }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 6rem; align-items: start; margin-top: 3rem;
+}
+
+.contact-info h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem; color: var(--cream); margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 2px;
+  background: rgba(212,132,58,0.15);
+  border: 1px solid rgba(212,132,58,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1.1rem;
+}
+.contact-item-body label {
+  display: block; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.3rem;
+}
+.contact-item-body a, .contact-item-body p {
+  color: var(--warm); text-decoration: none; font-size: 1rem;
+  transition: color 0.3s;
+}
+.contact-item-body a:hover { color: var(--sand); }
+
+/* FORM */
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+.field label {
+  display: block; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.5rem;
+}
+
+.field input, .field textarea, .field select {
+  width: 100%;
+  background: rgba(26,22,20,0.6);
+  border: 1px solid rgba(200,169,110,0.2);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--accent);
+  background: rgba(26,22,20,0.9);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field select option { background: var(--stone); }
+.field textarea { resize: vertical; min-height: 140px; }
+
+.form-submit {
+  background: var(--accent); color: white;
+  border: none; cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 1.1rem 2.5rem;
+  border-radius: 2px; align-self: flex-start;
+  transition: background 0.3s, transform 0.2s;
+}
+.form-submit:hover { background: var(--sand); transform: translateY(-2px); }
+
+.form-note {
+  font-size: 0.8rem; color: var(--muted); margin-top: -0.5rem;
+}
+
+.success-msg {
+  display: none;
+  background: rgba(200,169,110,0.1);
+  border: 1px solid var(--sand);
+  color: var(--sand);
+  padding: 1.2rem; border-radius: 2px;
+  font-size: 0.95rem; text-align: center;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #100e0c;
+  padding: 3rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(200,169,110,0.1);
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem; letter-spacing: 3px; color: var(--sand);
+}
+.footer-logo span { color: var(--accent); }
+.footer-copy { color: var(--muted); font-size: 0.8rem; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--sand); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(-8px); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 7rem 1.5rem 5rem; }
+  section { padding: 4rem 1.5rem; }
+  #about { grid-template-columns: 1fr; gap: 3rem; }
+  .about-visual { height: 300px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(26,22,20,0.2); }
+  .hero-geo { display: none; }
+  .about-highlights { flex-direction: column; gap: 1rem; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#hero" class="nav-logo">Nova<span>Façade</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+
+  <!-- Geometric SVG decoration -->
+
+  <svg class="hero-geo" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="50" y="50" width="300" height="300" stroke="#c8a96e" stroke-width="1"/>
+    <rect x="100" y="100" width="200" height="200" stroke="#d4843a" stroke-width="1"/>
+    <rect x="150" y="150" width="100" height="100" stroke="#c8a96e" stroke-width="1"/>
+    <line x1="50" y1="50" x2="150" y2="150" stroke="#c8a96e" stroke-width="0.5"/>
+    <line x1="350" y1="50" x2="250" y2="150" stroke="#c8a96e" stroke-width="0.5"/>
+    <line x1="50" y1="350" x2="150" y2="250" stroke="#c8a96e" stroke-width="0.5"/>
+    <line x1="350" y1="350" x2="250" y2="250" stroke="#c8a96e" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="60" stroke="#d4843a" stroke-width="0.5" stroke-dasharray="4 4"/>
+    <circle cx="200" cy="200" r="120" stroke="#c8a96e" stroke-width="0.5" stroke-dasharray="2 6"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-tag">Expert BTP — Bourges &amp; Région</div>
+    <h1 class="hero-title">
+      NOVA<br/><span class="accent">FAÇADE</span>
+    </h1>
+    <p class="hero-sub">
+      Spécialiste de la rénovation de façades et du gros œuvre BTP dans le Cher.
+      Qualité, fiabilité et savoir-faire artisanal au service de vos projets.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Demander un devis</a>
+      <a href="tel:0652903491" class="btn-tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        06 52 90 34 91
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    Défiler
+    <div></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Années d'expérience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Chantiers réalisés</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Satisfaction client</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-tag">Nos expertises</div>
+    <h2 class="section-title">Ce que nous<br/><span>réalisons</span></h2>
+    <div class="divider"></div>
+    <p>Nova Façade intervient sur tous vos travaux de façade et de gros œuvre, du bâtiment individuel aux immeubles collectifs, avec rigueur et professionnalisme.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Ravalement de Façade</div>
+      <p class="service-desc">Nettoyage, rénovation et embellissement de vos façades. Enduits, peintures, isolation thermique par l'extérieur (ITE). Remise aux normes garantie.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🧱</div>
+      <div class="service-name">Gros Œuvre BTP</div>
+      <p class="service-desc">Fondations, élévation de murs, dalles, chapes, maçonnerie traditionnelle et contemporaine. Nous prenons en charge vos projets de construction du début à la fin.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <div class="service-name">Rénovation &amp; Extension</div>
+      <p class="service-desc">Agrandissement de maison, surélévation, réhabilitation de bâtiment. Transformez votre habitat avec des travaux de qualité et des matériaux durables.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">❄️</div>
+      <div class="service-name">Isolation Thermique</div>
+      <p class="service-desc">Isolation par l'extérieur ou l'intérieur. Réduction de vos factures énergétiques, amélioration du confort thermique, éligible aux aides de l'État.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🪟</div>
+      <div class="service-name">Étanchéité &amp; Joints</div>
+      <p class="service-desc">Traitement des fissures, reprise d'étanchéité, jointoiement de pierre et brique. Protégez durablement votre patrimoine immobilier.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📋</div>
+      <div class="service-name">Devis &amp; Conseil</div>
+      <p class="service-desc">Étude de votre projet, conseil technique personnalisé, devis détaillé et gratuit. Nous vous accompagnons de la conception à la réception des travaux.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="about-rect about-rect-1">NOVA</div>
+    <div class="about-rect about-rect-2">
+      <p>Basé à<br/>Bourges<br/>Cher (18)</p>
+    </div>
+    <div class="about-badge">Artisan qualifié</div>
+  </div>
+
+  <div class="about-text reveal">
+    <div class="section-tag">À propos</div>
+    <h2 class="section-title">Votre partenaire<br/><span>de confiance</span></h2>
+    <div class="divider"></div>
+    <p>Nova Façade est une entreprise artisanale spécialisée dans les travaux de façade et de gros œuvre, basée à Bourges dans le Cher.</p>
+    <p>Nous intervenons sur toute la région Centre-Val de Loire pour des particuliers, des syndics et des professionnels. Notre engagement : des travaux soignés, réalisés dans les délais, avec des matériaux de qualité.</p>
+    <p>Chaque chantier est unique. Nous prenons le temps d'analyser votre projet pour vous proposer la solution la plus adaptée à vos besoins et à votre budget.</p>
+
+```
+<div class="about-highlights">
+  <div class="highlight">
+    <div class="highlight-dot"></div>
+    <p>Devis gratuit sous 48h</p>
+  </div>
+  <div class="highlight">
+    <div class="highlight-dot"></div>
+    <p>Garantie décennale</p>
+  </div>
+  <div class="highlight">
+    <div class="highlight-dot"></div>
+    <p>Artisan assurance RCP</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="section-tag reveal">Contact</div>
+  <h2 class="section-title reveal">Parlons de votre<br/><span>projet</span></h2>
+  <div class="divider reveal"></div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Nos coordonnées</h3>
+
+```
+  <div class="contact-item">
+    <div class="contact-icon">📞</div>
+    <div class="contact-item-body">
+      <label>Téléphone</label>
+      <a href="tel:0652903491">06 52 90 34 91</a>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <div class="contact-icon">✉️</div>
+    <div class="contact-item-body">
+      <label>Email</label>
+      <a href="mailto:novafacade18@gmail.com">novafacade18@gmail.com</a>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <div class="contact-icon">📍</div>
+    <div class="contact-item-body">
+      <label>Localisation</label>
+      <p>Bourges, Cher (18)<br/>Interventions région Centre-Val de Loire</p>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <div class="contact-icon">🕐</div>
+    <div class="contact-item-body">
+      <label>Horaires</label>
+      <p>Lun – Ven : 7h00 – 18h00<br/>Sam : 8h00 – 12h00</p>
+    </div>
+  </div>
+</div>
+
+<div class="reveal">
+  <form class="contact-form" id="contactForm">
+    <div class="form-row">
+      <div class="field">
+        <label>Prénom *</label>
+        <input type="text" name="prenom" placeholder="Jean" required/>
+      </div>
+      <div class="field">
+        <label>Nom *</label>
+        <input type="text" name="nom" placeholder="Dupont" required/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Email *</label>
+        <input type="email" name="email" placeholder="jean.dupont@email.com" required/>
+      </div>
+      <div class="field">
+        <label>Téléphone</label>
+        <input type="tel" name="tel" placeholder="06 00 00 00 00"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Type de travaux *</label>
+      <select name="type" required>
+        <option value="" disabled selected>Sélectionnez une prestation</option>
+        <option>Ravalement de façade</option>
+        <option>Gros œuvre / Maçonnerie</option>
+        <option>Rénovation / Extension</option>
+        <option>Isolation thermique (ITE)</option>
+        <option>Étanchéité / Joints</option>
+        <option>Autre</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Votre message *</label>
+      <textarea name="message" placeholder="Décrivez votre projet : nature des travaux, surface approximative, localisation, contraintes particulières…" required></textarea>
+    </div>
+
+    <p class="form-note">* Champs obligatoires. Réponse garantie sous 24–48h ouvrées.</p>
+
+    <button type="submit" class="form-submit">Envoyer ma demande →</button>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Votre message a bien été envoyé ! Nous vous répondrons à <strong id="userEmail"></strong> dans les plus brefs délais.
+    </div>
+  </form>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">Nova<span>Façade</span></div>
+  <p class="footer-copy">© 2025 Nova Façade — Bourges (18) — Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">À propos</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Contact form — mailto handler
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fd = new FormData(this);
+    const prenom = fd.get('prenom');
+    const nom    = fd.get('nom');
+    const email  = fd.get('email');
+    const tel    = fd.get('tel') || 'Non renseigné';
+    const type   = fd.get('type');
+    const msg    = fd.get('message');
+
+    const subject = encodeURIComponent(`Demande de devis – ${type} – ${prenom} ${nom}`);
+    const body = encodeURIComponent(
+      `Bonjour,\n\nVous avez reçu une nouvelle demande via le formulaire de contact de votre site.\n\n`+
+      `━━━━━━━━━━━━━━━━━━━━━━━\n`+
+      `👤 Nom : ${prenom} ${nom}\n`+
+      `📧 Email : ${email}\n`+
+      `📞 Téléphone : ${tel}\n`+
+      `🔧 Type de travaux : ${type}\n`+
+      `━━━━━━━━━━━━━━━━━━━━━━━\n\n`+
+      `💬 Message :\n${msg}\n\n`+
+      `━━━━━━━━━━━━━━━━━━━━━━━\n`+
+      `Message envoyé depuis le site Nova Façade.`
+    );
+
+    // Open mail client with pre-filled data
+    window.location.href = `mailto:novafacade18@gmail.com?subject=${subject}&body=${body}`;
+
+    // Show confirmation
+    document.getElementById('userEmail').textContent = email;
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+
+    // Scroll to success message
+    setTimeout(() => {
+      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  });
+</script>
+
+</body>
+</html>
